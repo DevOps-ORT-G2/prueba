@@ -1,4 +1,4 @@
-resouce "aws_ecr_repository" "main"
+resouce "aws_ecr_repository" "main" {
   name      = "products-service"
   image_tag_mutability = "MUTABLE"
 
