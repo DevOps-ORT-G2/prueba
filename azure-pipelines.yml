@@ -34,3 +34,12 @@ steps:
 
 - script: docker ps -a
   displayName: Verificar dockers levantados
+
+#transfiriendo imagen a ecr publico
+- task: ECRPushImage@1
+  inputs:
+    awsCredentials: 'AWS'
+    regionName: 'us-east-1'
+    imageSource: 'imagename'
+    sourceImageName: 'products-service'
+    repositoryName: 'micro-servicios'
