@@ -46,7 +46,7 @@ steps:
 
 - script: | 
     echo "hello world" > guardando.txt
-    cat guardado.txt
+    cat guardando.txt
     git config --global user.email "diegodlrh@hotmail.com"
     git config --global user.name "diegodlrh"
     SET sourceBranch=origin/%BUILD_SOURCEBRANCH:refs/heads/=%
