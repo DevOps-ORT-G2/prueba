@@ -47,6 +47,8 @@ steps:
 - script: | 
     echo "hello world" > guardando.txt
     cat guardado.txt
+    git config --global user.email "diegodlrh@hotmail.com"
+    git config --global user.name "diegodlrh"
     SET sourceBranch=origin/%BUILD_SOURCEBRANCH:refs/heads/=%
     #ECHO GIT STATUS
     git status
@@ -58,4 +60,4 @@ steps:
     git push origin
     #ECHO GIT STATUS
     git status
-    
+
