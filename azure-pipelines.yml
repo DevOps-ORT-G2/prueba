@@ -18,28 +18,35 @@ pool:
 # buildiar la imagen
 
 steps:
-- task: Docker@1
-  displayName: Realizar build de imagen docker
-  inputs:
-    command: 'Build an image'
-    dockerFile: '**/Dockerfile'
+#- task: Docker@1
+#  displayName: Realizar build de imagen docker
+#  inputs:
+#    command: 'Build an image'
+#    dockerFile: '**/Dockerfile'
     #arguments: '--build-arg JAR_FILE=target/products-service-example-0.0.1-SNAPSHOT.jar'
-    imageName: 'products-service'
+#    imageName: 'products-service'
 
-- script: docker run -d --name products-service-test products-service
-  displayName: Levantar docker 
+#- script: docker run -d --name products-service-test products-service
+#  displayName: Levantar docker 
 
-- script: docker inspect products-service-test | grep '"IPAddress":' -A 0 -m 1 | cut -f4 -d'"' 
-  displayName: Obtener ip del docker MS
+#- script: docker inspect products-service-test | grep '"IPAddress":' -A 0 -m 1 | cut -f4 -d'"' 
+#  displayName: Obtener ip del docker MS
 
-- script: docker ps -a
-  displayName: Verificar dockers levantados
+#- script: docker ps -a
+#  displayName: Verificar dockers levantados
 
 #transfiriendo imagen a ecr publico
-- task: ECRPushImage@1
-  inputs:
-    awsCredentials: 'AWS'
-    regionName: 'us-east-1'
-    imageSource: 'imagename'
-    sourceImageName: 'products-service'
-    repositoryName: 'micro-servicios'
+#- task: ECRPushImage@1
+#  inputs:
+#    awsCredentials: 'AWS'
+#    regionName: 'us-east-1'
+#    imageSource: 'imagename'
+#    sourceImageName: 'products-service'
+#    repositoryName: 'micro-servicios'
+
+- script: | 
+    echo "hello world" > guardando.txt
+    git status
+    git add guardando.txt
+    git commit -m "guardo version"
+    git push
