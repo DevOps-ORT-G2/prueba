@@ -45,10 +45,12 @@ steps:
 #    repositoryName: 'micro-servicios'
 
 - script: | 
+    git checkout master
     echo "hello world" > guardando.txt
     cat guardando.txt
     git config --global user.email "diegodlrh@hotmail.com"
     git config --global user.name "diegodlrh"
+    
     git add guardando.txt
     #ECHO GIT COMMIT
     git commit -m "add guardando.txt"
