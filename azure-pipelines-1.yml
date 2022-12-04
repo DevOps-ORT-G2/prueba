@@ -1,0 +1,65 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+#- master
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+
+pool:
+  vmImage: ubuntu-latest
+
+# buildiar la imagen
+
+steps:
+#- task: Docker@1
+#  displayName: Realizar build de imagen docker
+#  inputs:
+#    command: 'Build an image'
+#    dockerFile: '**/Dockerfile'
+    #arguments: '--build-arg JAR_FILE=target/products-service-example-0.0.1-SNAPSHOT.jar'
+#    imageName: 'products-service'
+
+#- script: docker run -d --name products-service-test products-service
+#  displayName: Levantar docker 
+
+#- script: docker inspect products-service-test | grep '"IPAddress":' -A 0 -m 1 | cut -f4 -d'"' 
+#  displayName: Obtener ip del docker MS
+
+#- script: docker ps -a
+#  displayName: Verificar dockers levantados
+
+#transfiriendo imagen a ecr publico
+#- task: ECRPushImage@1
+#  inputs:
+#    awsCredentials: 'AWS'
+#    regionName: 'us-east-1'
+#    imageSource: 'imagename'
+#    sourceImageName: 'products-service'
+#    repositoryName: 'micro-servicios'
+
+- script: | 
+    #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
+    git clone https://github.com/DevOps-ORT-G2/prueba.git 
+    cd prueba
+
+    echo "hello world" > guardando.txt
+    cat guardando.txt
+    git config --global user.email "diegodlrh@hotmail.com"
+    git config --global user.name "Diego de los Reyes"
+    
+    git add guardando.txt
+    #ECHO GIT COMMIT
+    git commit -m "add guardando.txt"
+    #ECHO GIT STATUS
+    git status
+    #ECHO GIT PUSH
+    git push -u origin master # $(Build.SourceBranchName)
+    #ECHO GIT STATUS
+    git status
