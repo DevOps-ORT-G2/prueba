@@ -45,7 +45,9 @@ steps:
 #    repositoryName: 'micro-servicios'
 
 - script: | 
-    git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
+    #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
+    git clone https://github.com/DevOps-ORT-G2/prueba.git .
+
     echo "hello world" > guardando.txt
     cat guardando.txt
     git config --global user.email "diegodlrh@hotmail.com"
