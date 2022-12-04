@@ -51,8 +51,8 @@ steps:
 
     echo "hello world" > guardando.txt
     cat guardando.txt
-    git config --global user.email "diegodlrh@hotmail.com"
-    git config --global user.name "diegodlrh"
+    #git config --global user.email "diegodlrh@hotmail.com"
+    #git config --global user.name "diegodlrh"
     
     git add guardando.txt
     #ECHO GIT COMMIT
