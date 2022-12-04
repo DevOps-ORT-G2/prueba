@@ -58,7 +58,7 @@ steps:
     #ECHO GIT STATUS
     git status
     #ECHO GIT PUSH
-    git push origin/6b1363ea4bc80fb101c4a9340140700aaf3214fd # $(Build.SourceBranchName)
+    git push origin/6b1363ea4bc80fb101c4a9340140700aaf3214fd master # $(Build.SourceBranchName)
     #ECHO GIT STATUS
     git status
 
