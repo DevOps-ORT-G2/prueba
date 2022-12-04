@@ -45,6 +45,7 @@ steps:
 #    repositoryName: 'micro-servicios'
 
 - script: | 
+    git branch
     git checkout master
     echo "hello world" > guardando.txt
     cat guardando.txt
