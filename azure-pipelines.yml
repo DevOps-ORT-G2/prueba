@@ -46,21 +46,20 @@ steps:
 
 - script: | 
     echo "hello world" > guardando.txt
-    @echo off
-    ECHO SOURCE BRANCH IS %BUILD_SOURCEBRANCH%
+    #ECHO SOURCE BRANCH IS %BUILD_SOURCEBRANCH%
     IF %BUILD_SOURCEBRANCH% == refs/heads/main (
       ECHO Building main branch so no merge is needed.
       EXIT
     )
     SET sourceBranch=origin/%BUILD_SOURCEBRANCH:refs/heads/=%
-    ECHO GIT STATUS
+    #ECHO GIT STATUS
     git status
-    ECHO GIT COMMIT
+    #ECHO GIT COMMIT
     git commit -m "Merge to main"
-    ECHO GIT STATUS
+    #ECHO GIT STATUS
     git status
-    ECHO GIT PUSH
+    #ECHO GIT PUSH
     git push origin
-    ECHO GIT STATUS
+    #ECHO GIT STATUS
     git status
     
