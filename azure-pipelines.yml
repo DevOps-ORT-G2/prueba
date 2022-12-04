@@ -69,7 +69,6 @@ steps:
     repositoryName: 'DevOps-ORT-G2/prueba'
     action: 'create'
     target: '$(Build.SourceVersion)'
-    tagSource: 'gitTag'
-    tagPattern: 'release-v1.*'
+    tagSource: 'master'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
