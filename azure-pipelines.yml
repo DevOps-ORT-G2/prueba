@@ -46,7 +46,8 @@ steps:
 
 - script: | 
     #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
-    git clone https://github.com/DevOps-ORT-G2/prueba.git .
+    git clone https://github.com/DevOps-ORT-G2/prueba.git 
+    cd prueba
 
     echo "hello world" > guardando.txt
     cat guardando.txt
@@ -62,13 +63,3 @@ steps:
     git push -u origin master # $(Build.SourceBranchName)
     #ECHO GIT STATUS
     git status
-
-- task: GitHubRelease@1
-  inputs:
-    gitHubConnection: 'Github'
-    repositoryName: 'DevOps-ORT-G2/prueba'
-    action: 'create'
-    target: '$(Build.SourceVersion)'
-    tagSource: 'master'
-    changeLogCompareToRelease: 'lastFullRelease'
-    changeLogType: 'commitBased'
