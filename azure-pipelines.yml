@@ -46,7 +46,21 @@ steps:
 
 - script: | 
     echo "hello world" > guardando.txt
+    @echo off
+    ECHO SOURCE BRANCH IS %BUILD_SOURCEBRANCH%
+    IF %BUILD_SOURCEBRANCH% == refs/heads/main (
+      ECHO Building main branch so no merge is needed.
+      EXIT
+    )
+    SET sourceBranch=origin/%BUILD_SOURCEBRANCH:refs/heads/=%
+    ECHO GIT STATUS
     git status
-    git add guardando.txt
-    git commit -m "guardo version"
-    git push
+    ECHO GIT COMMIT
+    git commit -m "Merge to main"
+    ECHO GIT STATUS
+    git status
+    ECHO GIT PUSH
+    git push origin
+    ECHO GIT STATUS
+    git status
+    
