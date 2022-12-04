@@ -49,10 +49,9 @@ steps:
     cat guardando.txt
     git config --global user.email "diegodlrh@hotmail.com"
     git config --global user.name "diegodlrh"
-    SET sourceBranch=origin/%BUILD_SOURCEBRANCH:refs/heads/=%
     git add guardando.txt
     #ECHO GIT COMMIT
-    git commit -m "Merge to main"
+    git commit -m "add guardando.txt"
     #ECHO GIT STATUS
     git status
     #ECHO GIT PUSH
