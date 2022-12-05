@@ -22,11 +22,26 @@ steps:
   persistCredentials: true
 
 
+#- script: | 
+#    git config --global user.email "diegodlrh@hotmail.com"
+#    git config --global user.name "diegodlrh"
+
+#    echo "hello world" > guardando.txt
+#    cat guardando.txt
+  
+#    git add .
+#    git commit -m "add guardando.txt"
+#    git push origin HEAD:master 
+
+  #env:
+  #  SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+
+
 - script: | 
     #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
-    #git clone -b master --single-branch https://github.com/DevOps-ORT-G2/products-service.git ms-products
-    #cd ms-products
+    git clone -b master https://github.com/DevOps-ORT-G2/products-service.git ms-products
+    cd ms-products
     git config --global user.email "diegodlrh@hotmail.com"
     git config --global user.name "diegodlrh"
 
@@ -36,5 +51,3 @@ steps:
     git add .
     git commit -m "add guardando.txt"
     git push origin HEAD:master 
-  #env:
-  #  SYSTEM_ACCESSTOKEN: $(System.AccessToken)
