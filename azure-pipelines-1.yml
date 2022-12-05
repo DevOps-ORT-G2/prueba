@@ -45,9 +45,9 @@ steps:
     git config --global user.email "diegodlrh@hotmail.com"
     git config --global user.name "diegodlrh"
 
-    echo "hello world" > guardando.txt
+    echo "hello world" >> guardando.txt
     cat guardando.txt
   
     git add .
     git commit -m "add guardando.txt"
-    git push origin HEAD:master 
+    git push origin master 
