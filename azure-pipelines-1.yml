@@ -60,6 +60,6 @@ steps:
     #ECHO GIT STATUS
     git status
     #ECHO GIT PUSH
-    git push -u origin master # $(Build.SourceBranchName)
+    git push -u origin qa # $(Build.SourceBranchName)
     #ECHO GIT STATUS
     git status
