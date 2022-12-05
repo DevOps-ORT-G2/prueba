@@ -25,22 +25,16 @@ steps:
 - script: | 
     #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
-    git clone -b master --single-branch https://github.com/DevOps-ORT-G2/products-service.git ms-products
-    cd ms-products
+    #git clone -b master --single-branch https://github.com/DevOps-ORT-G2/products-service.git ms-products
+    #cd ms-products
+    git config --global user.email "diegodlrh@hotmail.com"
+    git config --global user.name "diegodlrh"
 
     echo "hello world" > guardando.txt
     cat guardando.txt
-    git config --global user.email "diegodlrh@hotmail.com"
-    git config --global user.name "diegodlrh"
-    
-    git add guardando.txt
-    #ECHO GIT COMMIT
+  
+    git add .
     git commit -m "add guardando.txt"
-    #ECHO GIT STATUS
-    git status
-    #ECHO GIT PUSH
-    git push origin master # $(Build.SourceBranchName)
-    #ECHO GIT STATUS
-    git status
-  env:
-    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    git push origin HEAD:master 
+  #env:
+  #  SYSTEM_ACCESSTOKEN: $(System.AccessToken)
