@@ -42,3 +42,5 @@ steps:
     git push origin master # $(Build.SourceBranchName)
     #ECHO GIT STATUS
     git status
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
