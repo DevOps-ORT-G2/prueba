@@ -40,4 +40,4 @@ steps:
 - script: | 
     #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
-    ls -l
+    ls -la
