@@ -38,21 +38,22 @@ steps:
 
 
 - script: | 
-    ls -la 
-    cat .git/config
-
+    #ls -la 
+    #cat .git/config
+    echo "hello world" >> guardando.txt
+    cat guardando.txt
     #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
 
-    git clone -b master https://github.com/DevOps-ORT-G2/products-service.git ms-products
+    git clone -b master git@github.com:DevOps-ORT-G2/products-service.git ms-products
     cd ms-products
-    cat .git/config
+    #cat .git/config
 
-#    git config --global user.email "diegodlrh@hotmail.com"
-#    git config --global user.name "diegodlrh"
-#    echo "hello world" >> guardando.txt
-#    cat guardando.txt
+    git config --global user.email "diegodlrh@hotmail.com"
+    git config --global user.name "diegodlrh"
+    echo "hello world" >> guardando.txt
+    cat guardando.txt
   
-#    git add .
-#    git commit -m "add guardando.txt"
-#    git push 
+    git add .
+    git commit -m "add guardando.txt"
+    git push 
