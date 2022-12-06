@@ -45,7 +45,7 @@ steps:
     #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
 
-    git clone -b master git@github.com:DevOps-ORT-G2/products-service.git ms-products
+    git clone git@github.com:DevOps-ORT-G2/products-service.git
     ls -la
     cd products-service
     
