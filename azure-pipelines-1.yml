@@ -59,6 +59,6 @@ steps:
     git add .
     git commit -m "add guardando.txt"
     #git push origin HEAD:master 
-    git push https://:$(REPO_PAT)@github.com/DevOps-ORT-G2/products-service.git
+    git push https://ddlreyes:$(REPO_PAT)@github.com/DevOps-ORT-G2/products-service.git
 
 
