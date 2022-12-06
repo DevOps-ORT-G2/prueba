@@ -56,4 +56,4 @@ steps:
   
     git add .
     git commit -m "add guardando.txt"
-    git push 
+    git push origin HEAD:master 
