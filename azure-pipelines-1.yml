@@ -40,8 +40,8 @@ steps:
 - script: | 
     #ls -la 
     #cat .git/config
-    echo "hello world" >> guardando.txt
-    cat guardando.txt
+    #echo "hello world" >> guardando.txt
+    #cat guardando.txt
     #git remote set-url origin https://github.com/DevOps-ORT-G2/prueba.git
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
 
@@ -50,12 +50,15 @@ steps:
     git -c http.https://github.com/DevOps-ORT-G2/products-service.git.extraheader="AUTHORIZATION: basic $AUTH" clone https://github.com/DevOps-ORT-G2/products-service.git --no-checkout --branch master
     ls -la
     cd products-service
+    git config --global user.email "diegodlrh@hotmail.com"
+    git config --global user.name "diegodlrh"
   
     echo "hello world" >> guardando.txt
     cat guardando.txt
   
     git add .
     git commit -m "add guardando.txt"
-    git push origin HEAD:master 
+    #git push origin HEAD:master 
+    git push https://$(REPO_PAT)@github.com/DevOps-ORT-G2/products-service.git
 
 
