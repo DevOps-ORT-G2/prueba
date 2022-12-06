@@ -46,10 +46,10 @@ steps:
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
 
     #git clone git@github.com:DevOps-ORT-G2/products-service.git
-    #AUTH=$(echo -n ":$REPO_PAT" | openssl base64 | tr -d '\n')
-    #git -c http.https://github.com/DevOps-ORT-G2/products-service.extraheader="AUTHORIZATION: basic $AUTH" clone https://github.com/DevOps-ORT-G2/products-service --no-checkout --branch master
+    AUTH=$(echo -n ":$REPO_PAT" | openssl base64 | tr -d '\n')
+    git -c http.https://github.com/DevOps-ORT-G2/products-service.git.extraheader="AUTHORIZATION: basic $AUTH" clone https://github.com/DevOps-ORT-G2/products-service.git --no-checkout --branch master
     #git clone https://:$PAT@github.com/DevOps-ORT-G2/products-service.git
-    git clone https://github.com/DevOps-ORT-G2/products-service.git --no-checkout --branch master
+    #git clone https://github.com/DevOps-ORT-G2/products-service.git --no-checkout --branch master
 
     cd products-service
     echo "hello world" >> guardando.txt
