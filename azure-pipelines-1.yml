@@ -46,7 +46,9 @@ steps:
     #git clone https://github.com/DevOps-ORT-G2/prueba.git 
 
     git clone -b master git@github.com:DevOps-ORT-G2/products-service.git ms-products
-    cd ms-products
+    ls -la
+    cd products-service
+    
     #cat .git/config
 
     git config --global user.email "diegodlrh@hotmail.com"
