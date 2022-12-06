@@ -50,11 +50,7 @@ steps:
     git -c http.https://github.com/DevOps-ORT-G2/products-service.git.extraheader="AUTHORIZATION: basic $AUTH" clone https://github.com/DevOps-ORT-G2/products-service.git --no-checkout --branch master
     ls -la
     cd products-service
-    
-    #cat .git/config
-
-    git config --global user.email "diegodlrh@hotmail.com"
-    git config --global user.name "diegodlrh"
+  
     echo "hello world" >> guardando.txt
     cat guardando.txt
   
