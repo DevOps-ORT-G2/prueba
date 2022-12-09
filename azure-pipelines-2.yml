@@ -11,5 +11,3 @@ trigger:
 
 steps:
 - script: echo "trigger ci"
-
-
