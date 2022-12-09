@@ -10,7 +10,7 @@ trigger:
 - develop
 
 pool:
-  vmImage: windows-2019
+  vmImage: ubuntu-latest #windows-2019
 
 #stages:
 #- stage: Stage1
@@ -26,7 +26,8 @@ pool:
 #         Write-Host "##vso[task.setvariable variable=SASToken;isoutput=true;]TestSASTokenValue"
 
 steps:
-- powershell: Write-Host  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
+#- powershell: Write-Host  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
+- script: echo  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
 
 #    - task: TriggerPipeline@2
 #      inputs:
