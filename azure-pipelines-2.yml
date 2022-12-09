@@ -25,5 +25,5 @@ steps:
     buildDefinition: '21'
     Branch: 'pipelines_ci'
     buildapiversion: '6.0'
-    VariableInput: $(rama)
+    
     
