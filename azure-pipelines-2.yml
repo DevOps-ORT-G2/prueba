@@ -12,22 +12,14 @@ trigger:
 pool:
   vmImage: ubuntu-latest #windows-2019
 
-stages:
-- stage: Stage1
-  jobs:
-  - job: Stage1_Job1
-    steps:
-    - task: PowerShell@2
-      displayName: 'Stage1-Job1-Task1'
-      name: 'Stage1_Job1_Task1'
-      inputs:
-        targetType: 'inline'
-        script: |
-         echo "##vso[task.setvariable variable=SASToken;isoutput=true;]TestSASTokenValue"
+steps:
+- checkout: self
+  persistCredentials: true
+
 
 #steps:
 #- powershell: Write-Host  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
-    - script: echo  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
+#    - script: echo  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
 
 #    - task: TriggerPipeline@2
 #      inputs:
