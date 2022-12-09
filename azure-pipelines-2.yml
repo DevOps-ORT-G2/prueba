@@ -13,11 +13,16 @@ pool:
   vmImage: windows-2019
 
 steps:
+
+- powershell: Write-Host  "##vso[task.setvariable variable=rama]$(Build.SourceBranchName)"
+
+
 - task: TriggerPipeline@2
   inputs:
-    serviceConnection: 'Conector con azure DevOps'
+    serviceConnection: 'Nuevo conector con azure devops api'
     project: '5bbf4689-b099-4048-ac8d-75991900f2f0'
     Pipeline: 'Build'
-    buildDefinition: '3'
-    Branch: $(Build.SourceBranchName)
+    buildDefinition: '21'
+    Branch: '$(Build.SourceBranchName)'
     buildapiversion: '6.0'
+    
