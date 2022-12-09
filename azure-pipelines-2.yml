@@ -9,16 +9,9 @@ trigger:
 - qa
 - develop
 
-
 pool:
-  vmImage: windows-2019
+  vmImage: ubuntu-latest 
 
 steps:
-- task: TriggerPipeline@2
-  inputs:
-    serviceConnection: 'Conector con azure DevOps'
-    project: '5bbf4689-b099-4048-ac8d-75991900f2f0'
-    Pipeline: 'Build'
-    buildDefinition: '3'
-    Branch: $(Build.SourceBranchName)
-    buildapiversion: '6.0'
+- checkout: self
+  persistCredentials: true
