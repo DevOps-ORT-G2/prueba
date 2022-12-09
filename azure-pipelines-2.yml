@@ -14,7 +14,7 @@ pool:
 
 steps:
 
-- powershell: Write-Host  "##vso[task.setvariable variable=rama]$(Build.SourceBranchName)"
+- powershell: Write-Host  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
 
 
 - task: TriggerPipeline@2
