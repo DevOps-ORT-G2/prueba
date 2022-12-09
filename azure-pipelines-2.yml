@@ -8,3 +8,6 @@ trigger:
 - staging
 - qa
 - develop
+
+steps:
+- script: echo "trigger ci"
