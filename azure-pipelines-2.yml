@@ -1,0 +1,41 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+- staging
+- qa
+- develop
+
+pool:
+  vmImage: ubuntu-latest #windows-2019
+
+stages:
+- stage: Stage1
+  jobs:
+  - job: Stage1_Job1
+    steps:
+    - task: PowerShell@2
+      displayName: 'Stage1-Job1-Task1'
+      name: 'Stage1_Job1_Task1'
+      inputs:
+        targetType: 'inline'
+        script: |
+         echo "##vso[task.setvariable variable=SASToken;isoutput=true;]TestSASTokenValue"
+
+#steps:
+#- powershell: Write-Host  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
+    - script: echo  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
+
+#    - task: TriggerPipeline@2
+#      inputs:
+#        serviceConnection: 'Nuevo conector con azure devops api'
+#        project: '5bbf4689-b099-4048-ac8d-75991900f2f0'
+#        Pipeline: 'Build'
+#        buildDefinition: '21'
+#        Branch: 'pipelines_ci'
+#        buildapiversion: '6.0'
+    
+    
