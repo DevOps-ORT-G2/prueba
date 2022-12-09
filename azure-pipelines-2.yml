@@ -12,18 +12,29 @@ trigger:
 pool:
   vmImage: windows-2019
 
-steps:
+stages:
+- stage: Stage1
+  jobs:
+  - job: Stage1_Job1
+    steps:
+    - task: PowerShell@2
+      displayName: 'Stage1-Job1-Task1'
+      name: 'Stage1_Job1_Task1'
+      inputs:
+        targetType: 'inline'
+        script: |
+         Write-Host "##vso[task.setvariable variable=SASToken;isoutput=true;]TestSASTokenValue"
 
-- powershell: Write-Host  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
+#steps:
+#- powershell: Write-Host  "##vso[task.setvariable variable=rama;isOutput=true]$(Build.SourceBranchName)"
 
-
-- task: TriggerPipeline@2
-  inputs:
-    serviceConnection: 'Nuevo conector con azure devops api'
-    project: '5bbf4689-b099-4048-ac8d-75991900f2f0'
-    Pipeline: 'Build'
-    buildDefinition: '21'
-    Branch: 'pipelines_ci'
-    buildapiversion: '6.0'
+    - task: TriggerPipeline@2
+      inputs:
+        serviceConnection: 'Nuevo conector con azure devops api'
+        project: '5bbf4689-b099-4048-ac8d-75991900f2f0'
+        Pipeline: 'Build'
+        buildDefinition: '21'
+        Branch: 'pipelines_ci'
+        buildapiversion: '6.0'
     
     
