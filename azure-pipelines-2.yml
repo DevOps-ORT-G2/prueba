@@ -5,6 +5,9 @@
 
 trigger:
 - master
+- staging
+- qa
+- develop
 
 pool:
   vmImage: windows-2019
