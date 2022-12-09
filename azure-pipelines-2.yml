@@ -23,6 +23,6 @@ steps:
     project: '5bbf4689-b099-4048-ac8d-75991900f2f0'
     Pipeline: 'Build'
     buildDefinition: '21'
-    Branch: '$(Build.SourceBranchName)'
+    Branch: 'master'
     buildapiversion: '6.0'
     
