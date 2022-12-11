@@ -34,7 +34,7 @@ jobs:
   displayName: Wait for external validation
   pool: server
   dependsOn: ci
-  condition: eq(dependencies.ci.outputs['setVars.rama'], 'master')
+  condition: in(dependencies.ci.outputs['setVars.rama'], 'master', 'staging')
   variables:
     version: $[ dependencies.ci.outputs['setVars.version'] ]  
     rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
@@ -66,7 +66,9 @@ jobs:
     version: $[ dependencies.ci.outputs['setVars.tag_version'] ]  
     rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
   steps:
-  - script: echo "ESTOY EN EL ECHOOOOOOOO $(version) $(rama)"
+  - script: |
+      echo "ESTOY EN EL ECHOOOOOOOO $(version) $(rama)"
+      pwd
   
 
 #steps:
