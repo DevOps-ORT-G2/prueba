@@ -40,8 +40,10 @@ jobs:
       onTimeout: 'reject'
     condition: and(succeeded(), eq(variables['rama'], 'master')) 
 
-
-  - powershell: Write-Host "ESTOY EN EL ECHOOOOOOOO"
+- job:
+  displayName: ETAPA CI
+  steps:
+  - script: echo "ESTOY EN EL ECHOOOOOOOO"
   
 
 #steps:
