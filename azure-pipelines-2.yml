@@ -21,14 +21,18 @@ jobs:
     persistCredentials: true
 
   - script: |
-      echo "##vso[task.setvariable variable=tag_version]V20-PRUEBA"
-      echo "##vso[task.setvariable variable=rama]$(Build.SourceBranchName)"
+      echo "##vso[task.setvariable variable=tag_version;isoutput=true]V20-PRUEBA"
+      echo "##vso[task.setvariable variable=rama;isoutput=true]$(Build.SourceBranchName)"
 
 
-- job: waitForValidation
+- job: esperarValidacion
   displayName: Wait for external validation
   pool: server
   dependsOn: ci
+  variables:
+    version: $[ dependencies.ci.outputs['passOutput.tag_version'] ]  
+    rama: $[ dependencies.ci.outputs['passOutput.rama'] ]  
+
   timeoutInMinutes: 4320 # job times out in 3 days
   steps:
   - task: ManualValidation@0
@@ -37,16 +41,19 @@ jobs:
       notifyUsers:  |
         diegodlrh@hotmail.com
         ignacio.eat@gmail.com
-      instructions: 'Aprobar nueva versión de build ($(tag_version)) para orders en rama $(rama). De no aprobarla en 24hrs se cancelará este pipeline.'
+      instructions: 'Aprobar nueva versión de build ($(version)) para orders en rama $(rama). De no aprobarla en 24hrs se cancelará este pipeline.'
       onTimeout: 'reject'
   #condition: and(succeeded(), eq(variables['rama'], 'master')) 
 
 
 - job: 
   displayName: ETAPA CD
-  dependsOn: waitForValidation
+  dependsOn: esperarValidacion
+  variables:
+    version: $[ dependencies.ci.outputs['passOutput.tag_version'] ]  
+    rama: $[ dependencies.ci.outputs['passOutput.rama'] ]  
   steps:
-  - script: echo "ESTOY EN EL ECHOOOOOOOO"
+  - script: echo "ESTOY EN EL ECHOOOOOOOO $(version) $(rama)"
   
 
 #steps:
