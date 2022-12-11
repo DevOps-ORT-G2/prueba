@@ -41,7 +41,7 @@ jobs:
     condition: and(succeeded(), eq(variables['rama'], 'master')) 
 
 
-  - script: echo "ESTOY EN EL ECHOOOOOOOO"
+  - powershell: Write-Host "ESTOY EN EL ECHOOOOOOOO"
   
 
 #steps:
