@@ -36,20 +36,20 @@ jobs:
 
   - bash: | 
       echo "##vso[task.setvariable variable=rama;isoutput=true]master"
-  - bash: | 
       echo "##vso[task.setvariable variable=version;isoutput=true]v233prueba"   
+    name: setVars
 
   - bash: |
-      echo "tag es $(tag_version)"
-      echo "rama es $(rama)"
+      echo "tag es $(setVars.version)"
+      echo "rama es $(setVars.rama)"
 
 - job: esperarValidacion
   displayName: Wait for external validation
   pool: server
   dependsOn: ci
   variables:
-    version: $[ dependencies.ci.outputs['passOutput.tag_version'] ]  
-    rama: $[ dependencies.ci.outputs['passOutput.rama'] ]  
+    version: $[ dependencies.ci.outputs['setVars.version'] ]  
+    rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
 
   timeoutInMinutes: 4320 # job times out in 3 days
   steps:
@@ -58,7 +58,7 @@ jobs:
     inputs:
       notifyUsers:  |
         diegodlrh@hotmail.com
-        #ignacio.eat@gmail.com
+#        ignacio.eat@gmail.com
       instructions: 'Aprobar nueva versión de build ($(version)) para orders en rama $(rama). De no aprobarla en 24hrs se cancelará este pipeline.'
       onTimeout: 'reject'
   #condition: and(succeeded(), eq(variables['rama'], 'master')) 
@@ -70,8 +70,8 @@ jobs:
     - ci
     - esperarValidacion
   variables:
-    version: $[ dependencies.ci.outputs['passOutput.tag_version'] ]  
-    rama: $[ dependencies.ci.outputs['passOutput.rama'] ]  
+    version: $[ dependencies.ci.outputs['setVars.tag_version'] ]  
+    rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
   steps:
   - script: echo "ESTOY EN EL ECHOOOOOOOO $(version) $(rama)"
   
