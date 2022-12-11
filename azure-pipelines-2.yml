@@ -34,7 +34,6 @@ jobs:
   displayName: Wait for external validation
   pool: server
   dependsOn: ci
-  condition: and(succeeded(), eq(dependencies.ci.outputs['setVars.rama'], 'pp')) 
   variables:
     version: $[ dependencies.ci.outputs['setVars.version'] ]  
     rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
@@ -49,6 +48,7 @@ jobs:
 #        ignacio.eat@gmail.com
       instructions: 'Aprobar nueva versión de build ($(version)) para orders en rama $(rama). De no aprobarla en 24hrs se cancelará este pipeline.'
       onTimeout: 'reject'
+    condition: and(succeeded(), eq(dependencies.ci.outputs['setVars.rama'], 'pp')) 
   
 
 
