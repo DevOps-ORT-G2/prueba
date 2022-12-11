@@ -42,8 +42,9 @@ jobs:
   #condition: and(succeeded(), eq(variables['rama'], 'master')) 
 
 
-- job:
-  displayName: ETAPA CI
+- job: 
+  displayName: ETAPA CD
+  dependsOn: waitForValidation
   steps:
   - script: echo "ESTOY EN EL ECHOOOOOOOO"
   
