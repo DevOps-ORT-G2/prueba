@@ -24,6 +24,9 @@ jobs:
       echo "##vso[task.setvariable variable=tag_version;isoutput=true]V20-PRUEBA"
       echo "##vso[task.setvariable variable=rama;isoutput=true]$(Build.SourceBranchName)"
 
+  - script: |
+      echo $(tag_version)
+      echo $(rama)
 
 - job: esperarValidacion
   displayName: Wait for external validation
@@ -48,7 +51,9 @@ jobs:
 
 - job: 
   displayName: ETAPA CD
-  dependsOn: esperarValidacion
+  dependsOn: 
+    - ci
+    - esperarValidacion
   variables:
     version: $[ dependencies.ci.outputs['passOutput.tag_version'] ]  
     rama: $[ dependencies.ci.outputs['passOutput.rama'] ]  
