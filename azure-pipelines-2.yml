@@ -60,7 +60,7 @@ jobs:
     and
     (
       eq(dependencies.ci.result, 'Succeeded'),
-      in(dependencies.esperarValidacion.result, 'Succeeded', 'Skipped'),
+      in(dependencies.esperarValidacion.result, 'Succeeded', 'Skipped')
     )
   variables:
     version: $[ dependencies.ci.outputs['setVars.tag_version'] ]  
