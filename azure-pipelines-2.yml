@@ -38,7 +38,7 @@ jobs:
         ignacio.eat@gmail.com
       instructions: 'Aprobar nueva versión de build ($(tag_version)) para orders en rama $(rama). De no aprobarla en 24hrs se cancelará este pipeline.'
       onTimeout: 'reject'
-    condition: and(succeeded(), eq(variables['rama'], 'master')) 
+  #condition: and(succeeded(), eq(variables['rama'], 'master')) 
 
 - job:
   displayName: ETAPA CI
