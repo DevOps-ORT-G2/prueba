@@ -34,7 +34,7 @@ jobs:
   displayName: Wait for external validation
   pool: server
   dependsOn: ci
-  condition: eq($(rama), 'pp')
+  condition: eq(dependencies.ci.outputs['setVars.rama'], 'pp')
   variables:
     version: $[ dependencies.ci.outputs['setVars.version'] ]  
     rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
