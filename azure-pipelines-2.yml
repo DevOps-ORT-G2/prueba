@@ -34,10 +34,10 @@ jobs:
   displayName: Wait for external validation
   pool: server
   dependsOn: ci
+  condition: eq($(rama), 'pp')
   variables:
     version: $[ dependencies.ci.outputs['setVars.version'] ]  
     rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
-
   timeoutInMinutes: 4320 # job times out in 3 days
   steps:
   - task: ManualValidation@0
@@ -48,7 +48,6 @@ jobs:
 #        ignacio.eat@gmail.com
       instructions: 'Aprobar nueva versión de build ($(version)) para orders en rama $(rama). De no aprobarla en 24hrs se cancelará este pipeline.'
       onTimeout: 'reject'
-    condition: eq($(rama), 'pp')
   
 
 
@@ -57,6 +56,12 @@ jobs:
   dependsOn: 
     - ci
     - esperarValidacion
+  condition: |
+    and
+    (
+      eq(dependencies.ci.result, 'Succeeded'),
+      in(dependencies.esperarValidacion.result, 'Succeeded', 'Skipped'),
+    )
   variables:
     version: $[ dependencies.ci.outputs['setVars.tag_version'] ]  
     rama: $[ dependencies.ci.outputs['setVars.rama'] ]  
