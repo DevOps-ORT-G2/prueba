@@ -14,7 +14,7 @@ pool:
 
 
 jobs:
-- job:
+- job: ci
   displayName: ETAPA CI
   steps:
   - checkout: self
@@ -28,6 +28,7 @@ jobs:
 - job: waitForValidation
   displayName: Wait for external validation
   pool: server
+  dependsOn: ci
   timeoutInMinutes: 4320 # job times out in 3 days
   steps:
   - task: ManualValidation@0
@@ -40,12 +41,11 @@ jobs:
       onTimeout: 'reject'
   #condition: and(succeeded(), eq(variables['rama'], 'master')) 
 
-  - script:  echo "ESTOY EN EL ECHOOOOOOOO"
 
-#- job:
-#  displayName: ETAPA CI
-#  steps:
-#  - script:
+- job:
+  displayName: ETAPA CI
+  steps:
+  - script: echo "ESTOY EN EL ECHOOOOOOOO"
   
 
 #steps:
